@@ -1,9 +1,15 @@
 import React from 'react';
-import { StyleSheet,TouchableOpacity,Text  } from 'react-native';
+import { StyleSheet,TouchableOpacity,Text, Alert  } from 'react-native';
 
 export default function ListItems({el, deleteHandler}) {
+  const handleButtonDelete = () => Alert.alert("Delete Task", "Are you sure you want to delete the task ?",[
+    {text: " Yes", onPress: () => deleteHandler(el.key)},
+    {text: "No"}
+
+  ])
+
   return (
-    <TouchableOpacity onPress = {() => deleteHandler(el.key)}>
+    <TouchableOpacity onPress = {handleButtonDelete}>
         <Text style = {styles.text}>{el.text}</Text>
     </TouchableOpacity>
 
