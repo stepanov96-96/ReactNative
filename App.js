@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet,View, Text,FlatList } from 'react-native';
+import { StyleSheet,View, Text,FlatList, TouchableNativeFeedback, Keyboard} from 'react-native';
 
 import Header from './components/Header';
 import ListItems from './components/ListItems';
@@ -32,6 +32,10 @@ export default function App() {
   }
 
   return (
+    <TouchableNativeFeedback onPress={() =>{
+      Keyboard.dismiss();
+    }}
+    >
     <View >
         <Header/>
         <Form addHandler = {addHandler}/>
@@ -41,6 +45,7 @@ export default function App() {
             )}/> 
           </View>        
     </View>
+    </TouchableNativeFeedback>
   );
 }
 

@@ -1,21 +1,28 @@
 import React , {useState}from 'react';
 import { StyleSheet,TextInput,Text, Button,View  } from 'react-native';
+import { clear } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 export default function Form({addHandler}) {
 
     const [text, setValue] = useState('');
 
     const onChange =(text)=>{
+
         setValue(text);
-        
+        TextInput.clear('');
     };
+
+    const Test = ()=> {
+        addHandler(text);
+        
+    }
 
 
   return (
     <View>
-        <TextInput style ={styles.input} onChangeText = {onChange}  placeholder = 'Type in task'/> 
+        <TextInput  style ={styles.input} onChangeText = {onChange}  placeholder = 'Type in task'/> 
         <View style ={styles.buttonStyle}>
-            <Button color = {'#32CD32'} onPress={() => addHandler(text)} title = 'Add task'/>  
+            <Button color = {'#32CD32'} onPress={Test} title = 'Add task'/>  
         </View>
        
     </View>
